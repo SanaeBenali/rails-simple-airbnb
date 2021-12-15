@@ -1,0 +1,15 @@
+<h1>All our Flats</h1>
+<ul>
+  <% @flat.each do |task| %>
+    <li><h2><%= link_to "#{flat.name}", flat_path(flat) %></h2>
+  <%= link_to "Update",
+   edit_flat_path(flat)%>
+   <%= link_to "Delete",
+   task_path(task),
+   method: :delete,
+   data: {confirm: "Are you sure?"} %>
+   <% end %>
+</ul>
+
+<p>Add a new flat</p>
+  <%# <% link_to flat_path(flat.id), method: :edit, :delete, data: { confirm:"Delete #{flat.title}?"} %>
