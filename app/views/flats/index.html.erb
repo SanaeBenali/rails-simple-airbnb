@@ -1,15 +1,31 @@
-<h1>All our Flats</h1>
-<ul>
-  <% @flat.each do |task| %>
-    <li><h2><%= link_to "#{flat.name}", flat_path(flat) %></h2>
-  <%= link_to "Update",
-   edit_flat_path(flat)%>
-   <%= link_to "Delete",
-   task_path(task),
-   method: :delete,
-   data: {confirm: "Are you sure?"} %>
-   <% end %>
-</ul>
+<head>
+  <link rel="stylesheet" href="app/assets/stylesheets/flats.scss">
+</head>
 
-<p>Add a new flat</p>
-  <%# <% link_to flat_path(flat.id), method: :edit, :delete, data: { confirm:"Delete #{flat.title}?"} %>
+<body>
+<div class="container">
+  <h1>All our Flats</h1>
+
+    <% @flats.each do |flat| %>
+      <div class="card-flat">
+        <div class="card-flat-infos">
+          <h2><%= flat.name %></h2>
+          <p><%= flat.address %></p>
+          <p><%= flat.price_per_night %></p>
+          <p><%= flat.number_of_guests %></p>
+        <div class="card-flat-ctas">
+          <p><%= link_to "More info", flat_path(flat) %> | </p>
+          <p> <%= link_to "Update", edit_flat_path(flat)%> | </p>
+          <p> <%= link_to "Delete", flat_path(flat), method: :delete, data: {confirm: "Are you sure?"} %></p>
+        </div>
+        </div>
+    </div>
+    <% end %>
+  </ul>
+
+  <hr>
+  <p class="btn btn-ghost"><%= link_to "Add a new flat", new_flat_path  %></p>
+  <%# <% end %>
+
+</div>
+</body>
